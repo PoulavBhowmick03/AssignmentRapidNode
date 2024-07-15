@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Fractionalised Node License Platform
 
-## Getting Started
+# Getting Started
 
-First, run the development server:
+At the root of the project, run
+
+```bash
+npm install
+```
+
+Then you need to setup the DB and Prisma. Run
+
+Get a db url from [NeonDB](https://neon.tech)
+
+In the `.env` file, enter the following
+```bash
+DATABASE_URL=""
+```
+## Generate Prisma schema 
+
+In the terminal, run
+
+```bash
+npx prisma generate
+```
+## Run the server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+# Deployed Contract
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The contract is deployed using Remix in the 
+[Sepolia Network](https://sepolia.etherscan.io/tx/0x873ff9f6a8bb10e424e8d4cb48c1a5c9f95cf73370b15fd6dfd27fcfa0b21da3)
 
-## Learn More
+## Schema
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To view the schema, run
+```bash 
+npx prisma studio
+```
