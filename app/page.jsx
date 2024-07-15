@@ -5,7 +5,7 @@ import PurchaseForm from "../components/PurchaseForm";
 import MintButton from "../components/MintButton";
 import SalePeriodForm from "@/components/SalePeriodForm";
 import { FractionalizedNodeLicense } from "@/utils/ethereum";
-import BlacklistManager from "@/components/BlacklistManager";
+import BlacklistManager from "@/components/BlackListManager";
 import ContractInfo from "@/components/ContractInfo";
 import useWallet from "@/hooks/useWallet";
 import useContract from "@/hooks/useContract";
