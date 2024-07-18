@@ -20,7 +20,12 @@ export default function MintButton({ purchaseId, totalCost, batchId, chainId }) 
       if (!isSaleActive) {
         throw new Error('Sale is not active');
       }
-
+      // Check if the user is whitelisted
+      const address = await signer.getAddress();
+      const isWhitelisted = await contract.whitelist(address);
+      if (!isWhitelisted) {
+        throw new Error('User is not whitelisted');
+      }
       console.log('Contract address:', FractionalizedNodeLicense.address);
       console.log('Signer address:', await signer.getAddress());
       console.log('Purchase ID:', purchaseId);

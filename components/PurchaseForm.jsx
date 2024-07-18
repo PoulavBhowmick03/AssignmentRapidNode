@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ethers } from 'ethers';
-
+import { FractionalizedNodeLicense } from '@/utils/ethereum';
 export default function PurchaseForm({ onPurchase }) {
   const [quantity, setQuantity] = useState(1);
 
@@ -12,6 +12,18 @@ export default function PurchaseForm({ onPurchase }) {
       const signer = provider.getSigner();
       const address = await signer.getAddress();
       const network = await provider.getNetwork();
+      
+      // Call updateWhitelist function
+      const contract = new ethers.Contract(FractionalizedNodeLicense.address, FractionalizedNodeLicense.abi, signer);
+
+      const isWhitelisted = await contract.whitelist(address);
+      if (!isWhitelisted) {
+        const tx = await contract.updateWhitelist(address, true);
+        await tx.wait();
+        console.log('Whitelisted user:', address);
+        }
+
+      
       console.log('Chain id', network);
       const response = await fetch('/api/purchase', {
         method: 'POST',
@@ -31,7 +43,6 @@ export default function PurchaseForm({ onPurchase }) {
       console.error('Error:', error);
     }
   };
-
 
   return (
     <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md text-black">

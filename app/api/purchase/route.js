@@ -7,7 +7,7 @@ export async function POST(request) {
     const { userId, quantity, chainId } = await request.json();
     console.log("Received data:", { userId, quantity, chainId });
 
-    const FRACTION_PRICE = 0.05; 
+    const FRACTION_PRICE = 0.005; 
     const PLATFORM_FEE = 0.002;
     const totalCost = quantity * (FRACTION_PRICE + PLATFORM_FEE);
 

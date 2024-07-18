@@ -45,7 +45,7 @@ export default function Home() {
   };
 
   const handlePurchase = (purchaseId, totalCost, batchId) => {
-    console.log('Purchase info:', { purchaseId, totalCost, batchId });
+    console.log("Purchase info:", { purchaseId, totalCost, batchId });
     setPurchaseInfo({ purchaseId, totalCost, batchId });
   };
 
@@ -80,7 +80,9 @@ export default function Home() {
                 <p className="text-gray-700">
                   Total Cost: {purchaseInfo.totalCost} ETH
                 </p>
-                <p className="text-gray-700">Batch ID: {purchaseInfo.batchId || 'Not available'}</p>
+                <p className="text-gray-700">
+                  Batch ID: {purchaseInfo.batchId || "Not available"}
+                </p>
                 <MintButton
                   purchaseId={purchaseInfo.purchaseId}
                   totalCost={purchaseInfo.totalCost}
